@@ -3,7 +3,7 @@
 
 ## Getting Started
 
-Micropayment service that provides arbitrage opportunities across 10 cryptocurrency exchanges. API can be paid in XRP of ETH depending on with account you initialize your ILP router with.
+Micropayment service that provides arbitrage opportunities across 10 cryptocurrency exchanges. API can be paid in XRP or ETH depending on with account you initialize your ILP router with.
 
 ### Prerequisites
 ```
