@@ -3,7 +3,7 @@
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine.
+Micropayment service that provides arbitrage opportunities across 10 cryptocurrency exchanges. API can be paid in XRP of ETH depending on with account you initialize your ILP router with.
 
 ### Prerequisites
 ```
@@ -30,25 +30,24 @@ or
 moneyd eth:start --testnet
 
 ```
-Use the following steps to connect into bluzelle testnet
+Install the bluzelle lib
 
 ```
 npm install bluzelle
 
 ```
 
-
-
 ## Deployment
 
-MoneyD should be running in one terminal as described above
+Moneyd should be running in one terminal as described above
 
 In another terminal run the server
 ```
+git clone https://github.com/Dassy23/ilp-paidAPI
 cd ilp-paidAPI
 node index
 ```
-In one more terminal run
+In another terminal run
 
 ```
 ilp-curl http://{yourlocalhost}:8080/BTCUSD?volume=1
