@@ -13,7 +13,7 @@ exports.initExchange = async (exchange) => {
         });
         
     } catch (e) {
-        debugger
+        
         return null
     }
 }
@@ -29,7 +29,7 @@ exports.orderBook = async (exchange, market) => {
             return orders
         }
     } catch (err) {
-        debugger
+        
         console.log(`${exchange.name} Exchange query error`);
         return 0
     }
@@ -41,24 +41,24 @@ exports.bestPrice = async (totalVolume, pair) => {
         //let exchanges = ccxt.exchanges
         //console.log(exchanges)
         let quote = pair.slice(0,-3)
-        debugger
+        
         let base = pair.slice(-3)
         pair = quote + '/' + base
-        debugger
+        
         let exchanges = ['kraken', 'binance', 'bittrex', 'quadrigacx', 'bitfinex', 'bitstamp', 'gemini', 'poloniex', 'cex', 'gdax' ]
         let exchangePromise = exchanges.map(x => {
             return this.initExchange(x)
         })
         let resolveExchange = await Promise.all(exchangePromise)
-        debugger
+        
         resolveExchange = resolveExchange.filter(x => x != null)
         //query exchanges for orderbooks
         let orderbooksPromise = resolveExchange.map(exchange => {
-            debugger
+            
             return this.orderBook(exchange, pair)
         })
         let orderbooks = await Promise.all(orderbooksPromise)
-        debugger
+        
         let values = orderbooks.map((exchangeOB, index) => {
             if (exchangeOB != 0) {
                 return {
@@ -116,7 +116,7 @@ exports.bestPrice = async (totalVolume, pair) => {
                 return null
             }
         }).filter(x => x !== null)
-        debugger
+        
         let arbitrageBid = bidPrice.map((exchange) => {
             try{
                 let lastVal = exchange.bidPrices[exchange.bidPrices.length - 1]
@@ -134,7 +134,7 @@ exports.bestPrice = async (totalVolume, pair) => {
                 return null
             }
         }).filter(x => x !== null)
-        debugger
+        
         //sort and return the best prices
         let sortedAsks = _.orderBy(arbitrageAsk, 'cost', 'asc')
         let sortedBids = _.orderBy(arbitrageBid, 'cost', 'desc')
@@ -152,10 +152,10 @@ exports.bestPrice = async (totalVolume, pair) => {
             market:pair,
             ts: Date.now()
         }
-        debugger
+        
         return [buy, sell]
     } catch (e) {
-        debugger
+        
         console.log(e)
     }
 }
