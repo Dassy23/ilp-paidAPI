@@ -7,14 +7,18 @@ Micropayment service that provides arbitrage opportunities across 10 cryptocurre
 
 ### Prerequisites
 ```
-Node.js
+Nodejs
 ```
 Use the following steps to get ILP configured locally
 
 ```
 npm install -g moneyd 
-npm install moneyd-uplink-xrp
 npm install -g ilp-curl
+npm install
+```
+```
+
+npm install moneyd-uplink-xrp
 moneyd xrp:configure --testnet
 or
 npm install moneyd-uplink-eth
@@ -28,12 +32,6 @@ Next run an instance of moneyd to allow access to the ILP
 moneyd xrp:start --testnet
 or 
 moneyd eth:start --testnet
-
-```
-Install the bluzelle lib
-
-```
-npm install bluzelle
 
 ```
 
