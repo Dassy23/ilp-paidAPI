@@ -18,6 +18,7 @@ const bz = bluzelle({
 });
 
 const main = async () => {
+  let info = await util.bestPrice(10000, 'XRPUSD')
   await bz.createDB();
 };
 main().catch(e => {
